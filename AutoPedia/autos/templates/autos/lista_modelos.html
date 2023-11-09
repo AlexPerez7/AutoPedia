@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lista de Modelos de Autos</h1>
+<ul>
+    {% for modelo in modelos %}
+    <li>
+        <a href="{% url 'autos:detalle_modelo' pk=modelo.pk %}">
+            {{ modelo.marca.nombre }} - {{ modelo.nombre }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

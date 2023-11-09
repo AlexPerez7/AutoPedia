@@ -1,12 +1,6 @@
 # autos/models.py
 from django.db import models
-
-
-class Marca(models.Model):
-    nombre = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.nombre
+from marcas.models import Marca  # Importa el modelo de la aplicación "marcas"
 
 
 class Modelo(models.Model):
@@ -18,7 +12,15 @@ class Modelo(models.Model):
     cilindrada_motor = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True
     )
-    configuracion_motor = models.CharField(max_length=50, null=True, blank=True)
+    configuracion_motor_choices = [
+        ("V4", "V4"),
+        ("V6", "V6"),
+        ("V8", "V8"),
+        # Agrega más opciones según sea necesario
+    ]
+    configuracion_motor = models.CharField(
+        max_length=50, choices=configuracion_motor_choices, null=True, blank=True
+    )
 
     def __str__(self):
         return f"{self.marca} - {self.nombre} ({self.año})"

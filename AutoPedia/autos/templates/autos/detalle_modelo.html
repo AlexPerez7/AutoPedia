@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ modelo.marca.nombre }} - {{ modelo.nombre }}</h1>
+<p>Año: {{ modelo.año }}</p>
+<p>Descripción: {{ modelo.descripcion }}</p>
+<p>Cilindrada del Motor: {{ modelo.cilindrada_motor }}</p>
+<p>Configuración del Motor: {{ modelo.configuracion_motor }}</p>
+<!-- Puedes agregar más detalles según tus necesidades -->
+{% endblock %}
