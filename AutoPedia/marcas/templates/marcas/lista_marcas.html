@@ -1,0 +1,15 @@
+<!-- marcas/templates/marcas/lista_marcas.html -->
+{% extends 'autos/principal/base.html' %}
+
+{% block content %}
+<h1>Lista de Marcas</h1>
+
+<ul>
+    {% for marca in marcas %}
+    <li>
+        <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" width="50">
+        <a href="{% url 'marcas:detalle_marca' pk=marca.pk %}">{{ marca.nombre }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

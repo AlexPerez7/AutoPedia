@@ -1,0 +1,12 @@
+<!-- marcas/templates/marcas/formulario_marca.html -->
+{% extends 'autos/principal/base.html' %}
+
+{% block content %}
+<h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Marca</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'marcas:lista_marcas' %}">Volver a la lista de marcas</a>
+{% endblock %}
