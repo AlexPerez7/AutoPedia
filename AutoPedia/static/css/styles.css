@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/* Estilo para header y footer */
+.bg-custom {
+    background-color: #204562;
+    color: #FDFEFE;
+}

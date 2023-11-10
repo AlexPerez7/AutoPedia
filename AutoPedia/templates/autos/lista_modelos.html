@@ -1,0 +1,14 @@
+<!-- autos/templates/autos/lista_modelos.html -->
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Lista de Modelos de Autos</h1>
+<ul>
+    {% for modelo in modelos %}
+    <li>
+        <a href="{% url 'autos:detalle_modelo' pk=modelo.pk %}">{{ modelo.nombre }}</a>
+        ({{ modelo.marca }} - {{ modelo.generacion }} - {{ modelo.año_inicio }}-{{ modelo.año_fin }})
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

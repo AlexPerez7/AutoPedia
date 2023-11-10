@@ -8,7 +8,7 @@ from .forms import ModeloForm
 
 
 def home(request):
-    return render(request, "principal/home.html")
+    return render(request, "home/home.html")
 
 
 @staff_member_required

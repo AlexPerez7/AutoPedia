@@ -15,9 +15,13 @@ class ModeloForm(forms.ModelForm):
         fields = [
             "nombre",
             "marca",
-            "año",
+            "generacion",
+            "año_inicio",
+            "año_fin",
             "descripcion",
             "imagen",
-            "cilindrada_motor",
+            "cilindrada_motor_litros",
+            "caballos_fuerza",
+            "torque",
             "configuracion_motor",
         ]

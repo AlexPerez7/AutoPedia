@@ -1,26 +1,22 @@
 # autos/models.py
 from django.db import models
-from marcas.models import Marca  # Importa el modelo de la aplicación "marcas"
+from marcas.models import Marca
 
 
 class Modelo(models.Model):
     nombre = models.CharField(max_length=100)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
-    año = models.PositiveIntegerField()
+    generacion = models.CharField(max_length=20, null=True)
+    año_inicio = models.PositiveIntegerField(null=True)
+    año_fin = models.PositiveIntegerField(null=True, blank=True)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to="autos/images/")
-    cilindrada_motor = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True
+    cilindrada_motor_litros = models.DecimalField(
+        max_digits=4, decimal_places=1, null=True, blank=True
     )
-    configuracion_motor_choices = [
-        ("V4", "V4"),
-        ("V6", "V6"),
-        ("V8", "V8"),
-        # Agrega más opciones según sea necesario
-    ]
-    configuracion_motor = models.CharField(
-        max_length=50, choices=configuracion_motor_choices, null=True, blank=True
-    )
+    caballos_fuerza = models.PositiveIntegerField(null=True, blank=True)
+    torque = models.PositiveIntegerField(null=True, blank=True)
+    configuracion_motor = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.marca} - {self.nombre} ({self.año})"
+        return f"{self.marca} - {self.nombre} ({self.año_inicio}-{self.año_fin})"

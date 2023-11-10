@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<!-- Muestra detalles de la marca -->
+<h1>{{ marca.nombre }}</h1>
+<img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" width="100">
+<p>Año de Fundación: {{ marca.año_fundación }}</p>
+<p>País de Origen: {{ marca.pais_origen }}</p>
+<p>Fundador: {{ marca.fundador }}</p>
+<p>Descripción: {{ marca.descripcion }}</p>
+<!-- Agrega más detalles según tus necesidades -->
+{% endblock %}
