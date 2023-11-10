@@ -17,3 +17,12 @@ footer {
     background-color: #204562;
     color: #FDFEFE;
 }
+
+/*--------------------------------------------*/
+
+/* Estilo para el navbar */
+.custom-navbar-bg {
+    background-color: #FDFEFE;
+    /* Tu color personalizado */
+    /* Puedes ajustar otros estilos según sea necesario */
+}
