@@ -5,6 +5,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import ListView, DetailView
 from .models import Modelo
 from .forms import ModeloForm
+from marcas.models import Marca
 
 
 def home(request):
@@ -53,3 +54,15 @@ def eliminar_modelo(request, pk):
     modelo = get_object_or_404(Modelo, pk=pk)
     modelo.delete()
     return redirect("autos:lista_modelos")
+
+
+def buscar_resultados(request):
+    query = request.GET.get("q")
+    resultados_autos = Modelo.objects.filter(nombre__icontains=query)
+    resultados_marcas = Marca.objects.filter(nombre__icontains=query)
+
+    return render(
+        request,
+        "autos/buscar_resultados.html",
+        {"resultados_autos": resultados_autos, "resultados_marcas": resultados_marcas},
+    )
