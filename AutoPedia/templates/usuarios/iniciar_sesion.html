@@ -1,0 +1,13 @@
+<!-- usuarios/templates/usuarios/iniciar_sesion.html -->
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h2>Iniciar Sesión</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.username.label_tag }} {{ form.username }}
+    {{ form.password.label_tag }} {{ form.password }}
+    {{ form.email.label_tag }} {{ form.email }}
+    <button type="submit">Iniciar Sesión</button>
+</form>
+{% endblock %}
