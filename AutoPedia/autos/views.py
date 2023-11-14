@@ -9,7 +9,8 @@ from marcas.models import Marca
 
 
 def home(request):
-    return render(request, "home/home.html")
+    ultimos_modelos = Modelo.objects.order_by("-fecha_creacion")[:3]
+    return render(request, "home/home.html", {"ultimos_modelos": ultimos_modelos})
 
 
 @staff_member_required

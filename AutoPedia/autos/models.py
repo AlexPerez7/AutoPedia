@@ -1,4 +1,3 @@
-# autos/models.py
 from django.db import models
 from marcas.models import Marca
 
@@ -17,6 +16,7 @@ class Modelo(models.Model):
     caballos_fuerza = models.PositiveIntegerField(null=True, blank=True)
     torque = models.PositiveIntegerField(null=True, blank=True)
     configuracion_motor = models.CharField(max_length=50, null=True, blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)  # Agrega este campo
 
     def __str__(self):
         return f"{self.marca} - {self.nombre} ({self.año_inicio}-{self.año_fin})"

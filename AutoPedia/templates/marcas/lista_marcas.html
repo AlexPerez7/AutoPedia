@@ -4,6 +4,9 @@
 
 {% block content %}
 <h1>Lista de Marcas</h1>
+{% if user.is_superuser %}
+<a href="{% url 'marcas:crear_marca' %}">Agregar nueva marca</a>
+{% endif %}
 
 <ul>
     {% for marca in marcas %}

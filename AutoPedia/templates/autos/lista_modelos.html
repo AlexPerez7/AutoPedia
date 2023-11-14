@@ -3,6 +3,10 @@
 
 {% block content %}
 <h1>Lista de Modelos de Autos</h1>
+{% if user.is_superuser %}
+<a href="{% url 'autos:crear_modelo' %}">Agregar nuevo modelo</a>
+{% endif %}
+
 <ul>
     {% for modelo in modelos %}
     <li>

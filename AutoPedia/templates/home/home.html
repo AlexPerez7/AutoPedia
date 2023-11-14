@@ -1,8 +1,100 @@
-<!-- principal/home.html -->
 {% extends 'base/base.html' %}
-
+{% load static %}
 {% block content %}
-<h1>Bienvenido a AutoPedia</h1>
-<p>Explora nuestra enciclopedia de autos y marcas.</p>
-<p>¡Empieza a descubrir ahora!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- 1. Encabezado -->
+            <h1 class="display-4">Bienvenido a AutoPedia</h1>
+            <p class="lead">Explora nuestra enciclopedia de autos y marcas.</p>
+            <p>¡Empieza a descubrir ahora!</p>
+
+            <!-- 2. Cómo Funciona -->
+            <section class="my-4">
+                <h2 class="display-4 mb-4">Cómo Funciona</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="lead">Bienvenido a AutoPedia, tu enciclopedia automotriz en línea. Descubre una amplia
+                            variedad de información detallada sobre modelos de autos y marcas de todo el mundo.</p>
+                        <p>Explora nuestro contenido siguiendo estos sencillos pasos:</p>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Navega por Marcas: Descubre información detallada sobre las
+                                marcas más reconocidas. Haz clic en "Explorar Marcas" en el menú de navegación para ver
+                                la lista completa.</li>
+                            <li class="list-group-item">Descubre Modelos: Explora nuestra extensa base de datos de
+                                modelos de autos. Puedes buscar modelos específicos o ver todos los modelos disponibles.
+                            </li>
+                            <li class="list-group-item">Últimos Modelos Agregados: En la sección de la derecha,
+                                encontrarás los modelos más recientemente agregados. Haz clic en "Ver Detalles" para
+                                obtener más información.</li>
+                            <li class="list-group-item">Búsqueda Rápida: Utiliza la barra de búsqueda en la parte
+                                superior para encontrar modelos o marcas específicas de manera rápida y sencilla.</li>
+                            <li class="list-group-item">Marcas Destacadas: Descubre algunas de las marcas más
+                                destacadas con sus logotipos en la sección correspondiente.</li>
+                        </ol>
+                        <p class="mt-4">¡Empieza tu viaje por el fascinante mundo de los autos con AutoPedia!</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/Cars.jpg' %}" alt="Exploración de Autos" class="img-fluid rounded">
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 3. Búsqueda Rápida -->
+            <section class="my-4">
+                <h2>Búsqueda Rápida</h2>
+                <!-- Agrega aquí tu formulario de búsqueda -->
+                <form class="d-flex" action="{% url 'autos:buscar_resultados' %}" method="get">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Buscar modelos..."
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </section>
+
+            <!-- 4. Marcas Destacadas -->
+            <section class="my-4">
+                <h2>Marcas Destacadas</h2>
+                <div class="row">
+                    {% for marca in marcas_destacadas %}
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'marcas:detalle_marca' marca.id %}">
+                            <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- 5. Enlaces Rápidos -->
+            <section class="my-4">
+                <h2>Enlaces Rápidos</h2>
+                <a href="{% url 'autos:lista_modelos' %}" class="btn btn-primary">Ver Todos los Modelos</a>
+                <a href="{% url 'marcas:lista_marcas' %}" class="btn btn-primary">Explorar Marcas</a>
+            </section>
+
+            <!-- 6. Sección de Noticias o Novedades -->
+            <section class="my-4">
+                <h2>Noticias y Novedades</h2>
+                <!-- Agrega aquí las noticias o novedades -->
+                <p>Mantente actualizado con las últimas noticias del mundo automotriz.</p>
+            </section>
+        </div>
+
+        <div class="col-md-4">
+            <!-- 7. Últimos Modelos Agregados -->
+            <h2>Últimos Modelos Agregados</h2>
+            {% for modelo in ultimos_modelos %}
+            <div class="card mb-3">
+                <img src="{{ modelo.imagen.url }}" class="card-img-top" alt="{{ modelo.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ modelo.nombre }}</h5>
+                    <p class="card-text">{{ modelo.descripcion }}</p>
+                    <a href="{% url 'autos:detalle_modelo' pk=modelo.pk %}" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
