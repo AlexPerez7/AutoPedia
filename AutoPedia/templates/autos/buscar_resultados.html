@@ -1,0 +1,20 @@
+<!-- buscar_resultados.html -->
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h2>Resultados de la búsqueda para "{{ request.GET.q }}"</h2>
+
+<h3>Autos</h3>
+<ul>
+    {% for auto in resultados_autos %}
+    <li><a href="{% url 'autos:detalle_modelo' pk=auto.pk %}">{{ auto.nombre }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Marcas</h3>
+<ul>
+    {% for marca in resultados_marcas %}
+    <li><a href="{% url 'marcas:detalle_marca' pk=marca.pk %}">{{ marca.nombre }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -11,4 +11,5 @@ urlpatterns = [
     path("modelos/<int:pk>/", DetalleModelo.as_view(), name="detalle_modelo"),
     path("modelos/editar/<int:pk>/", editar_modelo, name="editar_modelo"),
     path("modelos/eliminar/<int:pk>/", eliminar_modelo, name="eliminar_modelo"),
+    path("buscar_resultados/", buscar_resultados, name="buscar_resultados"),
 ]
