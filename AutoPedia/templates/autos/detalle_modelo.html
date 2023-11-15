@@ -1,17 +1,25 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>{{ modelo.marca.nombre }} - {{ modelo.nombre }}</h1>
-<p>Año de Inicio: {{ modelo.año_inicio }}</p>
-<p>Año de Fin: {{ modelo.año_fin }}</p>
-<p>Descripción: {{ modelo.descripcion }}</p>
-<p>Cilindrada del Motor: {{ modelo.cilindrada_motor_litros }}L</p>
-<p>Configuración del Motor: {{ modelo.configuracion_motor }}</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <strong>
+                <h1 class="card-title">{{ modelo.marca.nombre }} - {{ modelo.nombre }}</h1>
+            </strong>
+            <p class="card-text"><strong>Año de Inicio:</strong> {{ modelo.año_inicio }}</p>
+            <p class="card-text"><strong>Año de Fin:</strong> {{ modelo.año_fin }}</p>
+            <p class="card-text"><strong>Descripción:</strong> {{ modelo.descripcion }}</p>
+            <p class="card-text"><strong>Cilindrada del Motor:</strong> {{ modelo.cilindrada_motor_litros }}L</p>
+            <p class="card-text"><strong>Configuración del Motor:</strong> {{ modelo.configuracion_motor }}</p>
 
-<!-- Agrega la imagen del auto -->
-{% if modelo.imagen %}
-<img src="{{ modelo.imagen.url }}" alt="{{ modelo.nombre }} - Imagen">
-{% endif %}
+            <!-- Agrega la imagen del auto -->
+            {% if modelo.imagen %}
+            <img src="{{ modelo.imagen.url }}" alt="{{ modelo.nombre }} - Imagen" class="img-fluid mt-3">
+            {% endif %}
 
-<!-- Puedes agregar más detalles según tus necesidades -->
+            <!-- Puedes agregar más detalles según tus necesidades -->
+        </div>
+    </div>
+</div>
 {% endblock %}

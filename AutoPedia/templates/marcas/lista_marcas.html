@@ -3,17 +3,47 @@
 {% load static %}
 
 {% block content %}
-<h1>Lista de Marcas</h1>
-{% if user.is_superuser %}
-<a href="{% url 'marcas:crear_marca' %}">Agregar nueva marca</a>
-{% endif %}
+<style>
+    .card {
+        width: 15rem;
+        /* Puedes ajustar el ancho según tus necesidades */
+        margin-bottom: 20px;
+        /* Espaciado entre tarjetas */
+    }
 
-<ul>
-    {% for marca in marcas %}
-    <li>
-        <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" width="50">
-        <a href="{% url 'marcas:detalle_marca' pk=marca.pk %}">{{ marca.nombre }}</a>
-    </li>
-    {% endfor %}
-</ul>
+    .card-img-top {
+        height: 150px;
+        /* Puedes ajustar la altura según tus necesidades */
+        object-fit: contain;
+        /* Ajusta el tamaño de la imagen manteniendo la proporción */
+    }
+
+    .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Marcas</h1>
+    {% if user.is_superuser %}
+    <a href="{% url 'marcas:crear_marca' %}" class="btn btn-primary mb-3">Agregar nueva marca</a>
+    {% endif %}
+
+    <div class="row">
+        {% for marca in marcas %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" class="card-img-top img-fluid">
+                <div class="card-body text-center">
+                    <h6 class="card-title">{{ marca.nombre }}</h6>
+                    <a href="{% url 'marcas:detalle_marca' pk=marca.pk %}" class="btn btn-primary btn-sm">Ver
+                        Detalles</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

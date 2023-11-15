@@ -2,17 +2,60 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Lista de Modelos de Autos</h1>
-{% if user.is_superuser %}
-<a href="{% url 'autos:crear_modelo' %}">Agregar nuevo modelo</a>
-{% endif %}
+<style>
+    .card {
+        width: 14rem;
+        /* Puedes ajustar el ancho según tus necesidades */
+        margin-bottom: 20px;
+        /* Espaciado entre tarjetas */
+    }
 
-<ul>
-    {% for modelo in modelos %}
-    <li>
-        <a href="{% url 'autos:detalle_modelo' pk=modelo.pk %}">{{ modelo.nombre }}</a>
-        ({{ modelo.marca }} - {{ modelo.generacion }} - {{ modelo.año_inicio }}-{{ modelo.año_fin }})
-    </li>
-    {% endfor %}
-</ul>
+    .card-img-top {
+        object-fit: cover;
+        /* Ajusta el tamaño de la imagen manteniendo la proporción */
+        border-top-left-radius: 10px;
+        /* Bordes redondeados en la parte superior izquierda */
+        border-top-right-radius: 10px;
+        /* Bordes redondeados en la parte superior derecha */
+        height: 100%;
+        /* Hace que la imagen llene completamente la tarjeta en la parte superior */
+        width: 100%;
+        /* Hace que la imagen llene completamente la tarjeta en la parte superior */
+    }
+
+    .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-text {
+        flex-grow: 1;
+        /* Hace que el contenido se expanda para llenar el espacio disponible */
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Modelos de Autos</h1>
+    {% if user.is_superuser %}
+    <a href="{% url 'autos:crear_modelo' %}" class="btn btn-primary mb-3">Agregar nuevo modelo</a>
+    {% endif %}
+
+    <div class="row">
+        {% for modelo in modelos %}
+        <div class="col-md-4">
+            <div class="card d-flex flex-column justify-content-between">
+                <img src="{{ modelo.imagen.url }}" alt="{{ modelo.nombre }} - Imagen"
+                    class="card-img-top img-fluid rounded-top">
+                <div class="card-body text-center">
+                    <h6 class="card-title">{{ modelo.nombre }}</h6>
+                    <p class="card-text">{{ modelo.marca }} - {{ modelo.generacion }} - {{ modelo.año_inicio }} - {{modelo.año_fin }}</p>
+                    <a href="{% url 'autos:detalle_modelo' pk=modelo.pk %}" class="btn btn-primary btn-sm">Ver
+                        Detalles</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
