@@ -1,12 +1,25 @@
+<!-- marcas/templates/marcas/detalle_marca.html -->
 {% extends 'base/base.html' %}
 
 {% block content %}
-<!-- Muestra detalles de la marca -->
-<h1>{{ marca.nombre }}</h1>
-<img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" width="100">
-<p>Año de Fundación: {{ marca.año_fundación }}</p>
-<p>País de Origen: {{ marca.pais_origen }}</p>
-<p>Fundador: {{ marca.fundador }}</p>
-<p>Descripción: {{ marca.descripcion }}</p>
-<!-- Agrega más detalles según tus necesidades -->
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="card-title">{{ marca.nombre }}</h1>
+                    <p class="card-text"><strong>Año de Fundación:</strong> {{ marca.año_fundación }}</p>
+                    <p class="card-text"><strong>País de Origen:</strong> {{ marca.pais_origen }}</p>
+                    <p class="card-text"><strong>Fundador:</strong> {{ marca.fundador }}</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" class="img-fluid mb-3"
+                        style="max-width: 200px;">
+                </div>
+            </div>
+            <p class="card-text"><strong>Descripción:</strong> {{ marca.descripcion }}</p>
+            <!-- Puedes agregar más detalles según tus necesidades -->
+        </div>
+    </div>
+</div>
 {% endblock %}

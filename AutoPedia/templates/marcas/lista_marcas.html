@@ -35,15 +35,12 @@
         {% for marca in marcas %}
         <div class="col-md-4">
             <div class="card">
-                <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" class="card-img-top img-fluid">
-                <div class="card-body text-center">
-                    <h6 class="card-title">{{ marca.nombre }}</h6>
-                    <a href="{% url 'marcas:detalle_marca' pk=marca.pk %}" class="btn btn-primary btn-sm">Ver
-                        Detalles</a>
-                </div>
+                <a href="{% url 'marcas:detalle_marca' pk=marca.pk %}">
+                    <img src="{{ marca.logo.url }}" alt="{{ marca.nombre }} Logo" class="card-img-top img-fluid">
+                </a>
             </div>
         </div>
-        {% endfor %}
+        {% endfor %} 
     </div>
 </div>
 {% endblock %}
