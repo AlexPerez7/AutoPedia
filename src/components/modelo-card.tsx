@@ -6,6 +6,7 @@ import { TIPO_COMBUSTIBLE_LABELS, type TipoCombustible } from "@/lib/validations
 
 export function ModeloCard({
   modelo,
+  priority = false,
 }: {
   modelo: {
     slug: string;
@@ -16,6 +17,7 @@ export function ModeloCard({
     tipoCombustible: string;
     marca: { nombre: string };
   };
+  priority?: boolean;
 }) {
   const rango =
     modelo.anioInicio && modelo.anioFin
@@ -34,6 +36,7 @@ export function ModeloCard({
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
+            priority={priority}
           />
         </div>
         <CardContent className="flex flex-col gap-1 py-4">

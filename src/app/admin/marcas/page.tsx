@@ -18,7 +18,7 @@ export default async function AdminMarcasPage() {
     <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Administrar marcas</h1>
-        <Button size="sm" render={<Link href="/admin/marcas/nueva" />}>
+        <Button size="sm" render={<Link href="/admin/marcas/nueva" />} nativeButton={false}>
           <PlusIcon /> Nueva marca
         </Button>
       </div>
@@ -39,6 +39,7 @@ export default async function AdminMarcasPage() {
               variant="ghost"
               size="icon-sm"
               render={<Link href={`/admin/marcas/${marca.id}/editar`} />}
+              nativeButton={false}
             >
               <PencilIcon className="size-4" />
             </Button>

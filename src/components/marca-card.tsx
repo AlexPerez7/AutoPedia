@@ -4,8 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function MarcaCard({
   marca,
+  priority = false,
 }: {
   marca: { slug: string; nombre: string; logoUrl: string; paisOrigen: string };
+  priority?: boolean;
 }) {
   return (
     <Link href={`/marcas/${marca.slug}`}>
@@ -18,6 +20,7 @@ export function MarcaCard({
               fill
               className="object-contain"
               sizes="200px"
+              priority={priority}
             />
           </div>
           <div className="text-center">

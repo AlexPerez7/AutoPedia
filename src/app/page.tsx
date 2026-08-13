@@ -27,10 +27,10 @@ export default async function Home() {
             un solo lugar.
           </p>
           <div className="flex gap-3">
-            <Button render={<Link href="/modelos" />}>
+            <Button render={<Link href="/modelos" />} nativeButton={false}>
               Ver modelos
             </Button>
-            <Button variant="outline" render={<Link href="/marcas" />}>
+            <Button variant="outline" render={<Link href="/marcas" />} nativeButton={false}>
               Explorar marcas
             </Button>
           </div>
@@ -52,7 +52,7 @@ export default async function Home() {
         ) : (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {ultimosModelos.map((modelo) => (
-              <ModeloCard key={modelo.id} modelo={modelo} />
+              <ModeloCard key={modelo.id} modelo={modelo} priority />
             ))}
           </div>
         )}

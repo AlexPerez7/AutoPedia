@@ -40,7 +40,7 @@ export default async function ModelosPage({ searchParams }: PageProps<"/modelos"
           </p>
         </div>
         {session?.user.role === "ADMIN" && (
-          <Button size="sm" render={<Link href="/admin/modelos/nuevo" />}>
+          <Button size="sm" render={<Link href="/admin/modelos/nuevo" />} nativeButton={false}>
             <PlusIcon /> Nuevo modelo
           </Button>
         )}
@@ -54,8 +54,8 @@ export default async function ModelosPage({ searchParams }: PageProps<"/modelos"
         <p className="text-muted-foreground">No se encontraron modelos con esos filtros.</p>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {modelos.map((modelo) => (
-            <ModeloCard key={modelo.id} modelo={modelo} />
+          {modelos.map((modelo, index) => (
+            <ModeloCard key={modelo.id} modelo={modelo} priority={index < 4} />
           ))}
         </div>
       )}

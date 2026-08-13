@@ -96,6 +96,7 @@ export default async function ModeloDetallePage({ params }: PageProps<"/modelos/
               variant="outline"
               size="sm"
               render={<Link href={`/admin/modelos/${modelo.id}/editar`} />}
+              nativeButton={false}
             >
               <PencilIcon /> Editar
             </Button>

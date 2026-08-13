@@ -39,6 +39,7 @@ export async function Navbar() {
               variant="ghost"
               size="sm"
               render={<Link href={link.href} />}
+              nativeButton={false}
             >
               {link.label}
             </Button>
@@ -103,10 +104,15 @@ export async function Navbar() {
                     </form>
                   ) : (
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" render={<Link href="/login" />}>
+                      <Button size="sm" render={<Link href="/login" />} nativeButton={false}>
                         Iniciar sesión
                       </Button>
-                      <Button variant="outline" size="sm" render={<Link href="/registro" />}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        render={<Link href="/registro" />}
+                        nativeButton={false}
+                      >
                         Registrarse
                       </Button>
                     </div>

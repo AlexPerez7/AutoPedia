@@ -23,7 +23,7 @@ export default async function MarcasPage() {
           </p>
         </div>
         {session?.user.role === "ADMIN" && (
-          <Button size="sm" render={<Link href="/admin/marcas/nueva" />}>
+          <Button size="sm" render={<Link href="/admin/marcas/nueva" />} nativeButton={false}>
             <PlusIcon /> Nueva marca
           </Button>
         )}
@@ -33,8 +33,8 @@ export default async function MarcasPage() {
         <p className="text-muted-foreground">Todavía no hay marcas cargadas.</p>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {marcas.map((marca) => (
-            <MarcaCard key={marca.id} marca={marca} />
+          {marcas.map((marca, index) => (
+            <MarcaCard key={marca.id} marca={marca} priority={index < 4} />
           ))}
         </div>
       )}

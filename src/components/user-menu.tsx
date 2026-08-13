@@ -62,10 +62,10 @@ export function UserMenu({
 export function GuestMenu() {
   return (
     <div className="flex items-center gap-2">
-      <Button variant="ghost" size="sm" render={<Link href="/login" />}>
+      <Button variant="ghost" size="sm" render={<Link href="/login" />} nativeButton={false}>
         <UserIcon /> Iniciar sesión
       </Button>
-      <Button size="sm" render={<Link href="/registro" />}>
+      <Button size="sm" render={<Link href="/registro" />} nativeButton={false}>
         Registrarse
       </Button>
     </div>

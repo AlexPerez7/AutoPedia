@@ -18,7 +18,7 @@ export default async function AdminModelosPage() {
     <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Administrar modelos</h1>
-        <Button size="sm" render={<Link href="/admin/modelos/nuevo" />}>
+        <Button size="sm" render={<Link href="/admin/modelos/nuevo" />} nativeButton={false}>
           <PlusIcon /> Nuevo modelo
         </Button>
       </div>
@@ -37,6 +37,7 @@ export default async function AdminModelosPage() {
               variant="ghost"
               size="icon-sm"
               render={<Link href={`/admin/modelos/${modelo.id}/editar`} />}
+              nativeButton={false}
             >
               <PencilIcon className="size-4" />
             </Button>

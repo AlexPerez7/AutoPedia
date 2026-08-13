@@ -68,6 +68,7 @@ export default async function MarcaDetallePage({ params }: PageProps<"/marcas/[s
                   variant="outline"
                   size="sm"
                   render={<Link href={`/admin/marcas/${marca.id}/editar`} />}
+                  nativeButton={false}
                 >
                   <PencilIcon /> Editar
                 </Button>
