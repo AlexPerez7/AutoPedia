@@ -1,6 +1,6 @@
 # AutoPedia
 
-Enciclopedia web de autos: explorá marcas y modelos, con ficha técnica, fotos, búsqueda y favoritos.
+Enciclopedia web de autos: explora marcas y modelos, con ficha técnica, fotos, búsqueda y favoritos.
 
 Reescritura completa del proyecto original (Django + SQLite + Bootstrap) sobre un stack moderno:
 
@@ -19,7 +19,7 @@ npx prisma db seed       # migra los datos del sitio Django original + contenido
 npm run dev
 ```
 
-Abrí [http://localhost:3000](http://localhost:3000).
+Abre [http://localhost:3000](http://localhost:3000).
 
 El seed crea un usuario admin de desarrollo:
 

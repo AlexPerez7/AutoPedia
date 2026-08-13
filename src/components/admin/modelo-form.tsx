@@ -58,7 +58,7 @@ export function ModeloForm({
             required
           >
             <option value="" disabled>
-              Seleccioná una marca
+              Selecciona una marca
             </option>
             {marcas.map((marca) => (
               <option key={marca.id} value={marca.id}>

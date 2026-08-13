@@ -23,7 +23,7 @@ export default async function Home() {
             La enciclopedia web de autos
           </h1>
           <p className="max-w-xl text-muted-foreground">
-            Explorá marcas y modelos de todo el mundo: historia, ficha técnica y fotos, todo en
+            Explora marcas y modelos de todo el mundo: historia, ficha técnica y fotos, todo en
             un solo lugar.
           </p>
           <div className="flex gap-3">

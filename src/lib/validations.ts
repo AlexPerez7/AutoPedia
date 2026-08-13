@@ -35,7 +35,7 @@ export type MarcaInput = z.infer<typeof marcaSchema>;
 
 export const modeloSchema = z.object({
   nombre: z.string().trim().min(1, "El nombre es obligatorio").max(100),
-  marcaId: z.string().trim().min(1, "Seleccioná una marca"),
+  marcaId: z.string().trim().min(1, "Selecciona una marca"),
   generacion: z.string().trim().max(20).optional().or(z.literal("").transform(() => undefined)),
   anioInicio: optionalInt,
   anioFin: optionalInt,

@@ -65,9 +65,9 @@ export function RegistroForm() {
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        ¿Ya tenés cuenta?{" "}
+        ¿Ya tienes cuenta?{" "}
         <Link href="/login" className="text-foreground underline underline-offset-4">
-          Iniciá sesión
+          Inicia sesión
         </Link>
       </p>
     </form>

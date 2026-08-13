@@ -45,9 +45,9 @@ export function LoginForm({ callbackUrl }: { callbackUrl: string }) {
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        ¿No tenés cuenta?{" "}
+        ¿No tienes cuenta?{" "}
         <Link href="/registro" className="text-foreground underline underline-offset-4">
-          Registrate
+          Regístrate
         </Link>
       </p>
     </form>

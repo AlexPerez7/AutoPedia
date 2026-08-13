@@ -36,7 +36,7 @@ export default async function BuscarPage({ searchParams }: PageProps<"/buscar">)
         )}
       </h1>
 
-      {!q && <p className="mt-2 text-muted-foreground">Escribí un término en la barra de búsqueda.</p>}
+      {!q && <p className="mt-2 text-muted-foreground">Escribe un término en la barra de búsqueda.</p>}
       {sinResultados && <p className="mt-2 text-muted-foreground">No se encontraron resultados.</p>}
 
       {marcas.length > 0 && (

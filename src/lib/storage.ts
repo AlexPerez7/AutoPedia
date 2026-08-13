@@ -18,7 +18,7 @@ const EXT_BY_TYPE: Record<string, string> = {
  */
 export async function guardarImagenSubida(file: File): Promise<string> {
   if (!ALLOWED_TYPES.has(file.type)) {
-    throw new Error("Formato de imagen no soportado. Usá JPG, PNG o WEBP.");
+    throw new Error("Formato de imagen no soportado. Usa JPG, PNG o WEBP.");
   }
   if (file.size > MAX_SIZE_BYTES) {
     throw new Error("La imagen no puede superar los 5MB.");

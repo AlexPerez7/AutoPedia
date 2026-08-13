@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s · AutoPedia",
   },
   description:
-    "Explorá marcas y modelos de autos de todo el mundo: historia, ficha técnica y fotos.",
+    "Explora marcas y modelos de autos de todo el mundo: historia, ficha técnica y fotos.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
