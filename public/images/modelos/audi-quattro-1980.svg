@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  <defs>
+    <linearGradient id="g-462491526" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5f1e2e" />
+      <stop offset="100%" stop-color="#2e0b16" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#g-462491526)" />
+  <text x="480" y="284" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="600" fill="#f5f5f5">Audi Audi Quattro</text>
+  <text x="480" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" letter-spacing="2" fill="#c7c7c7">FOTO PRÓXIMAMENTE</text>
+</svg>

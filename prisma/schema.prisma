@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(cuid())
+  name            String
+  email           String           @unique
+  passwordHash    String
+  role            String           @default("USER") // "USER" | "ADMIN"
+  createdAt       DateTime         @default(now())
+  favoriteMarcas  FavoriteMarca[]
+  favoriteModelos FavoriteModelo[]
+}
+
+model Marca {
+  id            String          @id @default(cuid())
+  slug          String          @unique
+  nombre        String
+  logoUrl       String
+  anioFundacion Int
+  paisOrigen    String
+  descripcion   String
+  fundador      String?
+  createdAt     DateTime        @default(now())
+  modelos       Modelo[]
+  favoritedBy   FavoriteMarca[]
+}
+
+model Modelo {
+  id                    String           @id @default(cuid())
+  slug                  String           @unique
+  nombre                String
+  marcaId               String
+  marca                 Marca            @relation(fields: [marcaId], references: [id], onDelete: Restrict)
+  generacion            String?
+  anioInicio            Int?
+  anioFin               Int?
+  descripcion           String
+  imagenUrl             String
+  cilindradaMotorLitros Float?
+  caballosFuerza        Int?
+  torque                Int?
+  configuracionMotor    String?
+  tipoCombustible       String           @default("GASOLINA") // GASOLINA | DIESEL | ELECTRICO | HIBRIDO | HIBRIDO_ENCHUFABLE
+  createdAt             DateTime         @default(now())
+  favoritedBy           FavoriteModelo[]
+
+  @@index([marcaId])
+}
+
+model FavoriteMarca {
+  userId  String
+  marcaId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  marca   Marca  @relation(fields: [marcaId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, marcaId])
+}
+
+model FavoriteModelo {
+  userId   String
+  modeloId String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  modelo   Modelo @relation(fields: [modeloId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, modeloId])
+}
