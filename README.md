@@ -13,9 +13,9 @@ Reescritura completa del proyecto original (Django + SQLite + Bootstrap) sobre u
 
 ## Setup local
 
-1. Creá un proyecto gratuito en [Neon](https://neon.tech) y copiá su connection string.
+1. Creá un proyecto gratuito en [Neon](https://neon.tech) y copiá las dos connection strings que te da (pooled y direct — ver "Variables de entorno" abajo).
 2. Creá un Blob Store gratuito en tu [proyecto de Vercel](https://vercel.com/docs/vercel-blob) (Storage → Create Database → Blob) y copiá el `BLOB_READ_WRITE_TOKEN`. Si preferís no crear el proyecto en Vercel todavía, podés omitir esta variable: las subidas de imágenes van a fallar con un error claro hasta que la configures.
-3. Copiá `.env.example` a `.env` y completá las tres variables.
+3. Copiá `.env.example` a `.env` y completá las cuatro variables.
 
 ```bash
 npm install
@@ -39,7 +39,8 @@ password: Admin1234!
 
 Ver `.env.example`:
 
-- `DATABASE_URL` — connection string de Postgres (Neon u otro proveedor).
+- `DATABASE_URL` — connection string *pooled* de Postgres (host con `-pooler` en Neon), la que usa la app en runtime.
+- `DIRECT_URL` — connection string directa (mismo host sin `-pooler`), usada solo por Prisma Migrate. Las conexiones pooleadas (PgBouncer) no soportan bien los prepared statements que necesita para aplicar el schema.
 - `AUTH_SECRET` — secreto de Auth.js. **Generar uno nuevo antes de deployar** (`npx auth secret`).
 - `BLOB_READ_WRITE_TOKEN` — token del Blob Store de Vercel, usado por `src/lib/storage.ts` para subir/borrar las imágenes de marcas y modelos.
 
@@ -56,8 +57,8 @@ Ver `.env.example`:
 
 1. Importá el repo en [Vercel](https://vercel.com/new).
 2. En el proyecto de Vercel, agregá un Blob Store (Storage → Create Database → Blob) — esto define `BLOB_READ_WRITE_TOKEN` automáticamente para los deploys.
-3. Configurá las variables de entorno del proyecto: `DATABASE_URL` (tu base de Neon) y `AUTH_SECRET` (generado con `npx auth secret`, distinto al de desarrollo).
-4. Corré `npx prisma migrate deploy` contra la base de producción antes del primer deploy (o agregalo como build command / paso previo).
+3. Configurá las variables de entorno del proyecto: `DATABASE_URL` y `DIRECT_URL` (tu base de Neon) y `AUTH_SECRET` (generado con `npx auth secret`, distinto al de desarrollo).
+4. Listo — el `build` script corre `prisma migrate deploy` antes de `next build`, así que cada deploy aplica las migraciones pendientes automáticamente contra `DIRECT_URL`.
 
 Con el plan Hobby de Vercel + el free tier de Neon + el free tier de Vercel Blob, este proyecto corre gratis para uso personal/no comercial.
 
