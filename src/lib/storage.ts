@@ -1,8 +1,6 @@
-import path from "node:path";
-import fs from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { del, put } from "@vercel/blob";
 
-const UPLOADS_DIR = path.join(process.cwd(), "public", "uploads");
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
 
@@ -24,17 +22,16 @@ export async function guardarImagenSubida(file: File): Promise<string> {
     throw new Error("La imagen no puede superar los 5MB.");
   }
 
-  await fs.mkdir(UPLOADS_DIR, { recursive: true });
-
   const fileName = `${randomUUID()}${EXT_BY_TYPE[file.type]}`;
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await fs.writeFile(path.join(UPLOADS_DIR, fileName), buffer);
+  const blob = await put(`uploads/${fileName}`, file, {
+    access: "public",
+    contentType: file.type,
+  });
 
-  return `/uploads/${fileName}`;
+  return blob.url;
 }
 
 export async function borrarImagenSubida(url: string): Promise<void> {
-  if (!url.startsWith("/uploads/")) return;
-  const filePath = path.join(process.cwd(), "public", url);
-  await fs.rm(filePath, { force: true });
+  if (!url.includes("/uploads/")) return;
+  await del(url);
 }
